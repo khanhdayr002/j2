@@ -155,7 +155,7 @@ app.get('/', function (request, response) {
         </style>
     </head>
     <body>
-        <h1>API - Satoru</h1>
+        <h1>API - DgkDgk</h1>
         ${categoryHtml}
         <div class="profile">
             <h2>Profile Satoru</h2>
