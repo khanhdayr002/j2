@@ -81,7 +81,7 @@ app.get('/', function (request, response) {
     }).join('');
 
     response.send(`
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -97,8 +97,6 @@ app.get('/', function (request, response) {
             padding: 10px;
             font-size: 10px;
             background-color: #000;
-            position: relative;
-            overflow: hidden;
         }
         h1 {
             font-size: 18px;
@@ -158,27 +156,6 @@ app.get('/', function (request, response) {
             font-size: 16px;
             margin-top: 0;
         }
-        /* CSS for Snow */
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            background: white;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            0% {
-                transform: translateY(0);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -200,26 +177,10 @@ app.get('/', function (request, response) {
             const music = document.getElementById('bg-music');
             music.play();
         }
-
-        // Snowfall effect
-        function createSnow() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000); // Remove snowflake after it falls
-        }
-
-        setInterval(createSnow, 100); // Create a snowflake every 100ms
     </script>
 </body>
 </html>
+
     `);
 });
 
