@@ -98,8 +98,6 @@ app.get('/', function (request, response) {
             padding: 10px;
             font-size: 10px;
             background-color: #000;
-            overflow: hidden;
-            position: relative;
         }
 
         /* Heading styling */
@@ -153,26 +151,6 @@ app.get('/', function (request, response) {
             height: 40px;
             border-radius: 50%;
         }
-
-        /* Floating particles effect */
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: float 10s infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -195,31 +173,7 @@ app.get('/', function (request, response) {
         </div>
     </div>
 
-    <!-- Particle effects -->
     <script>
-        // Create floating particles
-        const createParticle = () => {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            const size = Math.random() * 10 + 5; // Random size
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-
-            particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-            particle.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random animation duration
-            particle.style.animationDelay = `${Math.random() * 5}s`; // Random delay
-
-            document.body.appendChild(particle);
-
-            // Remove particle after animation
-            particle.addEventListener('animationend', () => {
-                particle.remove();
-            });
-        };
-
-        // Generate particles continuously
-        setInterval(createParticle, 300);
-
         // Auto-play music
         window.addEventListener('DOMContentLoaded', () => {
             const music = document.getElementById('bg-music');
@@ -235,8 +189,6 @@ app.get('/', function (request, response) {
     </script>
 </body>
 </html>
-
-
     `);
 });
 
