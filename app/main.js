@@ -81,7 +81,7 @@ app.get('/', function (request, response) {
     }).join('');
 
     response.send(`
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -160,7 +160,7 @@ app.get('/', function (request, response) {
 </head>
 <body>
     <h1>API - Dgk</h1>
-    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3" autoplay></audio>
+    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3" autoplay muted></audio>
 
     <div class="profile">
         <h2>Profile DangGiaKhanh</h2>
@@ -171,14 +171,15 @@ app.get('/', function (request, response) {
     </div>
 
     <script>
-        // Attempt to play music automatically
+        // Tự động phát nhạc khi trang tải
         window.addEventListener('DOMContentLoaded', () => {
             const music = document.getElementById('bg-music');
+            music.muted = false; // Bật tiếng sau khi phát
             const playPromise = music.play();
 
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    console.log('Autoplay failed:', error);
+                    console.log('Autoplay bị chặn:', error);
                 });
             }
         });
