@@ -159,7 +159,7 @@ app.get('/', function (request, response) {
         ${categoryHtml}
         <div class="profile">
             <h2>Profile DangGiaKhanh</h2>
-            <p>Author: DgKDgK<br>
+            <p>Author: DgK<br>
             <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
             <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
             MBBANK: </p>
