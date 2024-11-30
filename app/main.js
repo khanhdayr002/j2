@@ -81,7 +81,7 @@ app.get('/', function (request, response) {
     }).join('');
 
     response.send(`
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -160,8 +160,7 @@ app.get('/', function (request, response) {
 </head>
 <body>
     <h1>API - Dgk</h1>
-    <button onclick="playMusic()">🎵 Phát Nhạc</button>
-    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3"></audio>
+    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3" autoplay></audio>
 
     <div class="profile">
         <h2>Profile DangGiaKhanh</h2>
@@ -172,11 +171,17 @@ app.get('/', function (request, response) {
     </div>
 
     <script>
-        // Function to play music
-        function playMusic() {
+        // Attempt to play music automatically
+        window.addEventListener('DOMContentLoaded', () => {
             const music = document.getElementById('bg-music');
-            music.play();
-        }
+            const playPromise = music.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Autoplay failed:', error);
+                });
+            }
+        });
     </script>
 </body>
 </html>
