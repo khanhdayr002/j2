@@ -155,11 +155,11 @@ app.get('/', function (request, response) {
         </style>
     </head>
     <body>
-        <h1>API - DgkDgk</h1>
+        <h1>API - Dgk</h1>
         ${categoryHtml}
         <div class="profile">
-            <h2>Profile Satoru</h2>
-            <p>Author: Satoru<br>
+            <h2>Profile DangGiaKhanh</h2>
+            <p>Author: DgKDgK<br>
             <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
             <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
             MBBANK: </p>
@@ -207,5 +207,5 @@ process.on('unhandledRejection', (reason, promise) => {
 
 app.set('port', (process.env.PORT || 8888));
 app.listen(app.get('port'), function() {
-    log(`API SATORU is running on port ${app.get('port')}`, 'HOST UPTIME');
+    log(`API DGK is running on port ${app.get('port')}`, 'HOST UPTIME');
 });
