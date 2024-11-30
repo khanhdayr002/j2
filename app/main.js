@@ -165,6 +165,8 @@ app.get('/', function (request, response) {
             margin-top: 20px;
             text-align: center;
             display: none; /* Hide the music player initially */
+            opacity: 0; /* Set opacity to 0 for the fade effect */
+            transition: opacity 1s ease-in-out; /* Fade-in effect */
         }
         audio {
             width: 100%;
@@ -175,6 +177,15 @@ app.get('/', function (request, response) {
             transform: scale(1.05);
             transition: transform 0.3s ease-in-out;
         }
+        .now-playing-text {
+            font-size: 14px;
+            color: #3498db;
+            animation: fadeInText 1s ease-in-out;
+        }
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -183,7 +194,7 @@ app.get('/', function (request, response) {
 
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
-        <h2>Now Playing: Music from DgK</h2>
+        <h2 class="now-playing-text">Now Playing: Music from DgK</h2>
         <audio controls autoplay id="audioPlayer">
             Your browser does not support the audio element.
         </audio>
@@ -217,8 +228,9 @@ app.get('/', function (request, response) {
             // Set the source for the audio player
             audioPlayer.src = selectedMusic;
 
-            // Display the music player
+            // Display the music player and fade it in
             musicPlayer.style.display = 'block';
+            setTimeout(() => musicPlayer.style.opacity = 1, 100); // Delay to trigger fade-in effect
         }
 
         // Call the function to select and play a random song
@@ -226,6 +238,7 @@ app.get('/', function (request, response) {
     </script>
 </body>
 </html>
+
 
 
     `);
