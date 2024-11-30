@@ -160,8 +160,8 @@ app.get('/', function (request, response) {
         <div class="profile">
             <h2>Profile Satoru</h2>
             <p>Author: Satoru<br>
-            <a href="https://www.facebook.com/wind.009">FACEBOOK</a><br>
-            <a href="https://instagram.com/im.baooo">INSTAGRAM</a><br>
+            <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
+            <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
             MBBANK: </p>
         </div>
     </body>
