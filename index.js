@@ -1,5 +1,5 @@
 const chalkAnimation = require('chalkercli');
-let str = String.raw`Satoru`;
+let str = String.raw`Dang Gia Khanh`;
 let logo = String.raw`
 
 `;                           
