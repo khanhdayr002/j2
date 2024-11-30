@@ -109,6 +109,50 @@ app.get('/', function (request, response) {
             text-shadow: 0 0 10px #3498db, 0 0 20px #3498db;
         }
 
+        /* API list section */
+        .category {
+            margin-bottom: 15px;
+        }
+
+        .api-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .api-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .route-name {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .params {
+            color: #666;
+            flex-grow: 1;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .get-button {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
         /* Profile section styling */
         .profile {
             font-size: 12px;
@@ -157,6 +201,28 @@ app.get('/', function (request, response) {
     <h1>API - DGK</h1>
     <audio id="bg-music" src="https://cdn.fbsbx.com/v/t59.3654-21/467096692_532226176369524_1502215851174074072_n.mp3/1732947984125.mp3?_nc_cat=110&ccb=1-7&_nc_sid=d61c36&_nc_ohc=r2vCErSBE9kQ7kNvgHznq_0&_nc_zt=7&_nc_ht=cdn.fbsbx.com&_nc_gid=A6ZwZUozWNe0KHjTANABxha&oh=03_Q7cD1QE2zyQU9Wah4pECiVvr3IPEs3Kimk4kkkjwA1lrxNClkQ&oe=674C96EB&dl=1" autoplay muted></audio>
 
+    <!-- API List -->
+    <div class="category">
+        <h2 style="color: white;">Danh sách API</h2>
+        <ul class="api-list">
+            <li>
+                <span class="route-name">GET</span>
+                <span class="params">/api/users</span>
+                <a href="/api/users" class="get-button">Send Request</a>
+            </li>
+            <li>
+                <span class="route-name">POST</span>
+                <span class="params">/api/upload</span>
+                <a href="/api/upload" class="get-button">Send Request</a>
+            </li>
+            <li>
+                <span class="route-name">DELETE</span>
+                <span class="params">/api/delete</span>
+                <a href="/api/delete" class="get-button">Send Request</a>
+            </li>
+        </ul>
+    </div>
+
     <!-- Profile Section -->
     <div class="profile">
         <h2>Profile DangGiaKhanh</h2>
@@ -164,11 +230,11 @@ app.get('/', function (request, response) {
         <div class="social-links">
             <!-- Facebook link -->
             <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL" target="_blank">
-                <img src="https://i.imgur.com/Z4Z4Y9e.png" alt="Facebook" title="Facebook">
+                <img src="https://i.imgur.com/q8klL8H.jpeg" alt="Facebook" title="Facebook">
             </a>
             <!-- Instagram link -->
             <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt" target="_blank">
-                <img src="https://i.imgur.com/9Xc5Z3f.png" alt="Instagram" title="Instagram">
+                <img src="https://i.imgur.com/LADQ95h.jpeg" alt="Instagram" title="Instagram">
             </a>
         </div>
     </div>
@@ -189,6 +255,7 @@ app.get('/', function (request, response) {
     </script>
 </body>
 </html>
+
     `);
 });
 
