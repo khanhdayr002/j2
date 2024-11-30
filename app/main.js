@@ -86,9 +86,8 @@ app.get('/', function (request, response) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API - DGK</title>
+    <title>API - DgK</title>
     <style>
-        /* Body styling */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.4;
@@ -97,45 +96,41 @@ app.get('/', function (request, response) {
             margin: 0 auto;
             padding: 10px;
             font-size: 10px;
-            background-color: #000;
+            background-color: #f0f0f0;
         }
-
-        /* Heading styling */
         h1 {
-            font-size: 24px;
+            font-size: 18px;
             margin-bottom: 10px;
-            color: #fff;
-            text-align: center;
-            text-shadow: 0 0 10px #3498db, 0 0 20px #3498db;
         }
-
-        /* API list section */
+        h2 {
+            font-size: 14px;
+            margin: 10px 0 5px;
+        }
         .category {
             margin-bottom: 15px;
         }
-
         .api-list {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
-
         .api-list li {
             display: flex;
             align-items: center;
-            margin-bottom: 5px;
-            padding: 5px;
+            margin-bottom: 3px;
+            padding: 3px;
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 3px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
-
+        .api-list li:hover {
+            background-color: #e0e0e0;
+        }
         .route-name {
             font-weight: bold;
             margin-right: 5px;
         }
-
         .params {
             color: #666;
             flex-grow: 1;
@@ -143,116 +138,65 @@ app.get('/', function (request, response) {
             overflow: hidden;
             white-space: nowrap;
         }
-
         .get-button {
             background-color: #3498db;
             color: white;
-            padding: 2px 8px;
+            padding: 2px 5px;
             border-radius: 3px;
             text-decoration: none;
-            font-size: 10px;
+            font-size: 8px;
         }
-
-        /* Profile section styling */
+        .get-button:hover {
+            background-color: #2980b9;
+        }
         .profile {
-            font-size: 12px;
+            font-size: 10px;
             border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 5px;
+            border-radius: 3px;
             margin-top: 15px;
-            color: #fff;
-            background-color: #333;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            background-color: #ffffff;
         }
-
         .profile h2 {
-            font-size: 20px;
+            font-size: 16px;
             margin-top: 0;
-            text-shadow: 0 0 5px #fff;
         }
-
-        /* Social links styling */
-        .social-links {
-            margin-top: 10px;
+        .music-player {
+            margin-top: 20px;
+            text-align: center;
         }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 10px;
-            text-decoration: none;
-            color: #fff;
-            transition: transform 0.3s, box-shadow 0.3s;
+        audio {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px #fff;
-        }
-
-        .social-links img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        audio:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <h1>API - DGK</h1>
-    <audio id="bg-music" src="https://cdn.fbsbx.com/v/t59.3654-21/467096692_532226176369524_1502215851174074072_n.mp3/1732947984125.mp3?_nc_cat=110&ccb=1-7&_nc_sid=d61c36&_nc_ohc=r2vCErSBE9kQ7kNvgHznq_0&_nc_zt=7&_nc_ht=cdn.fbsbx.com&_nc_gid=A6ZwZUozWNe0KHjTANABxha&oh=03_Q7cD1QE2zyQU9Wah4pECiVvr3IPEs3Kimk4kkkjwA1lrxNClkQ&oe=674C96EB&dl=1" autoplay muted></audio>
+    <h1>API - DgK</h1>
+    ${categoryHtml}
 
-    <!-- API List -->
-    <div class="category">
-        <h2 style="color: white;">Danh sách API</h2>
-        <ul class="api-list">
-            <li>
-                <span class="route-name">GET</span>
-                <span class="params">/api/users</span>
-                <a href="/api/users" class="get-button">Send Request</a>
-            </li>
-            <li>
-                <span class="route-name">POST</span>
-                <span class="params">/api/upload</span>
-                <a href="/api/upload" class="get-button">Send Request</a>
-            </li>
-            <li>
-                <span class="route-name">DELETE</span>
-                <span class="params">/api/delete</span>
-                <a href="/api/delete" class="get-button">Send Request</a>
-            </li>
-        </ul>
+    <!-- Music Player -->
+    <div class="music-player">
+        <h2>Now Playing: Music from DgK</h2>
+        <audio controls autoplay>
+            <source src="https://files.catbox.moe/ist9k1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
     <!-- Profile Section -->
     <div class="profile">
-        <h2>Profile DangGiaKhanh</h2>
-        <p>Author: DgK</p>
-        <div class="social-links">
-            <!-- Facebook link -->
-            <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL" target="_blank">
-                <img src="https://i.imgur.com/q8klL8H.jpeg" alt="Facebook" title="Facebook">
-            </a>
-            <!-- Instagram link -->
-            <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt" target="_blank">
-                <img src="https://i.imgur.com/LADQ95h.jpeg" alt="Instagram" title="Instagram">
-            </a>
-        </div>
+        <h2>Profile DgK</h2>
+        <p>Author: DgK<br>
+        <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
+        <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
+        MBBANK: </p>
     </div>
-
-    <script>
-        // Auto-play music
-        window.addEventListener('DOMContentLoaded', () => {
-            const music = document.getElementById('bg-music');
-            music.muted = false;
-            const playPromise = music.play();
-
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log('Autoplay bị chặn:', error);
-                });
-            }
-        });
-    </script>
 </body>
 </html>
 
