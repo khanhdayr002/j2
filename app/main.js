@@ -81,91 +81,145 @@ app.get('/', function (request, response) {
     }).join('');
 
     response.send(`
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>API - DGK</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.4;
-                color: #333;
-                max-width: 800px;
-                margin: 0 auto;
-                padding: 10px;
-                font-size: 10px;
+   <!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API - DGK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            font-size: 10px;
+            background-color: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        h2 {
+            font-size: 14px;
+            margin: 10px 0 5px;
+        }
+        .category {
+            margin-bottom: 15px;
+        }
+        .api-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .api-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3px;
+            padding: 3px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        .route-name {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .params {
+            color: #666;
+            flex-grow: 1;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .get-button {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 8px;
+        }
+        .profile {
+            font-size: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            border-radius: 3px;
+            margin-top: 15px;
+            color: #fff;
+            background-color: #333;
+        }
+        .profile h2 {
+            font-size: 16px;
+            margin-top: 0;
+        }
+        /* CSS for Snow */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
             }
-            h1 {
-                font-size: 18px;
-                margin-bottom: 10px;
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
             }
-            h2 {
-                font-size: 14px;
-                margin: 10px 0 5px;
-            }
-            .category {
-                margin-bottom: 15px;
-            }
-            .api-list {
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-            }
-            .api-list li {
-                display: flex;
-                align-items: center;
-                margin-bottom: 3px;
-                padding: 3px;
-                background-color: #f9f9f9;
-                border: 1px solid #ddd;
-                border-radius: 3px;
-            }
-            .route-name {
-                font-weight: bold;
-                margin-right: 5px;
-            }
-            .params {
-                color: #666;
-                flex-grow: 1;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
-            .get-button {
-                background-color: #3498db;
-                color: white;
-                padding: 2px 5px;
-                border-radius: 3px;
-                text-decoration: none;
-                font-size: 8px;
-            }
-            .profile {
-                font-size: 10px;
-                border: 1px solid #ddd;
-                padding: 5px;
-                border-radius: 3px;
-                margin-top: 15px;
-            }
-            .profile h2 {
-                font-size: 16px;
-                margin-top: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>API - Dgk</h1>
-        ${categoryHtml}
-        <div class="profile">
-            <h2>Profile DangGiaKhanh</h2>
-            <p>Author: DgK<br>
-            <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
-            <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
-            MBBANK: </p>
-        </div>
-    </body>
-    </html>
+        }
+    </style>
+</head>
+<body>
+    <h1>API - Dgk</h1>
+    <button onclick="playMusic()">🎵 Phát Nhạc</button>
+    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3"></audio>
+
+    <div class="profile">
+        <h2>Profile DangGiaKhanh</h2>
+        <p>Author: DgK<br>
+        <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
+        <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
+        MBBANK: </p>
+    </div>
+
+    <script>
+        // Function to play music
+        function playMusic() {
+            const music = document.getElementById('bg-music');
+            music.play();
+        }
+
+        // Snowfall effect
+        function createSnow() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000); // Remove snowflake after it falls
+        }
+
+        setInterval(createSnow, 100); // Create a snowflake every 100ms
+    </script>
+</body>
+</html>
     `);
 });
 
