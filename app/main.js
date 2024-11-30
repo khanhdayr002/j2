@@ -88,6 +88,7 @@ app.get('/', function (request, response) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API - DGK</title>
     <style>
+        /* Body styling */
         body {
             font-family: Arial, sans-serif;
             line-height: 1.4;
@@ -97,84 +98,132 @@ app.get('/', function (request, response) {
             padding: 10px;
             font-size: 10px;
             background-color: #000;
+            overflow: hidden;
+            position: relative;
         }
+
+        /* Heading styling */
         h1 {
-            font-size: 18px;
+            font-size: 24px;
             margin-bottom: 10px;
             color: #fff;
+            text-align: center;
+            text-shadow: 0 0 10px #3498db, 0 0 20px #3498db;
         }
-        h2 {
-            font-size: 14px;
-            margin: 10px 0 5px;
-        }
-        .category {
-            margin-bottom: 15px;
-        }
-        .api-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .api-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3px;
-            padding: 3px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 3px;
-        }
-        .route-name {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        .params {
-            color: #666;
-            flex-grow: 1;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .get-button {
-            background-color: #3498db;
-            color: white;
-            padding: 2px 5px;
-            border-radius: 3px;
-            text-decoration: none;
-            font-size: 8px;
-        }
+
+        /* Profile section styling */
         .profile {
-            font-size: 10px;
+            font-size: 12px;
             border: 1px solid #ddd;
-            padding: 5px;
-            border-radius: 3px;
+            padding: 15px;
+            border-radius: 8px;
             margin-top: 15px;
             color: #fff;
             background-color: #333;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
+
         .profile h2 {
-            font-size: 16px;
+            font-size: 20px;
             margin-top: 0;
+            text-shadow: 0 0 5px #fff;
+        }
+
+        /* Social links styling */
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px #fff;
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>API - Dgk</h1>
-    <audio id="bg-music" src="https://files.catbox.moe/fzv4m2.mp3" autoplay muted></audio>
+    <h1>API - DGK</h1>
+    <audio id="bg-music" src="https://cdn.fbsbx.com/v/t59.3654-21/467096692_532226176369524_1502215851174074072_n.mp3/1732947984125.mp3?_nc_cat=110&ccb=1-7&_nc_sid=d61c36&_nc_ohc=r2vCErSBE9kQ7kNvgHznq_0&_nc_zt=7&_nc_ht=cdn.fbsbx.com&_nc_gid=A6ZwZUozWNe0KHjTANABxha&oh=03_Q7cD1QE2zyQU9Wah4pECiVvr3IPEs3Kimk4kkkjwA1lrxNClkQ&oe=674C96EB&dl=1" autoplay muted></audio>
 
+    <!-- Profile Section -->
     <div class="profile">
         <h2>Profile DangGiaKhanh</h2>
-        <p>Author: DgK<br>
-        <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL">FACEBOOK</a><br>
-        <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt">INSTAGRAM</a><br>
-        MBBANK: </p>
+        <p>Author: DgK</p>
+        <div class="social-links">
+            <!-- Facebook link -->
+            <a href="https://www.facebook.com/Danggiakhanh18t.vanhungcl?mibextid=ZbWKwL" target="_blank">
+                <img src="https://i.imgur.com/Z4Z4Y9e.png" alt="Facebook" title="Facebook">
+            </a>
+            <!-- Instagram link -->
+            <a href="https://www.instagram.com/gkhanh06?igsh=c3I2NnJ2YTNodmZt" target="_blank">
+                <img src="https://i.imgur.com/9Xc5Z3f.png" alt="Instagram" title="Instagram">
+            </a>
+        </div>
     </div>
 
+    <!-- Particle effects -->
     <script>
-        // Tự động phát nhạc khi trang tải
+        // Create floating particles
+        const createParticle = () => {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 10 + 5; // Random size
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+            particle.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random animation duration
+            particle.style.animationDelay = `${Math.random() * 5}s`; // Random delay
+
+            document.body.appendChild(particle);
+
+            // Remove particle after animation
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        };
+
+        // Generate particles continuously
+        setInterval(createParticle, 300);
+
+        // Auto-play music
         window.addEventListener('DOMContentLoaded', () => {
             const music = document.getElementById('bg-music');
-            music.muted = false; // Bật tiếng sau khi phát
+            music.muted = false;
             const playPromise = music.play();
 
             if (playPromise !== undefined) {
@@ -186,6 +235,7 @@ app.get('/', function (request, response) {
     </script>
 </body>
 </html>
+
 
     `);
 });
